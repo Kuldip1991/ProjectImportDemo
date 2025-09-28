@@ -19,12 +19,12 @@ class DiscountController extends Controller
         $userId = auth()->id(); // or pass manually
         $amount = $request->input('amount');
         $context = $request->input('context');
-
         $result = $this->discountService->apply($userId, $amount, $context);
-        return response()->json([
+        return redirect()->back()->with([
             'message' => 'Discounts applied successfully',
-            'data' => $result,
+            'result' => $result,
         ]);
+
     }
 
 }

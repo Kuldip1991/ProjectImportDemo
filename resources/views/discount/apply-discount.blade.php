@@ -4,8 +4,23 @@
     <title>Apply Discount</title>
 </head>
 <body>
-    <h1>Apply Discount</h1>
 
+    @if(session('result'))
+        <h3>Discount Summary</h3>
+        <p><strong>Original Amount:</strong> {{ session('result')['original_amount'] }}</p>
+        <p><strong>Discount Amount:</strong> {{ session('result')['discount_amount'] }}</p>
+        <p><strong>Final Amount:</strong> {{ session('result')['final_amount'] }}</p>
+
+        <h4>Applied Discounts:</h4>
+        <ul>
+            @foreach(session('result')['applied_discounts'] as $discount)
+                <li>
+                    <strong>{{ $discount['code'] }}</strong> — ₹{{ $discount['discount_amount'] }}
+                </li>
+            @endforeach
+        </ul>
+    @endif
+    <h1>Apply Discount</h1>
     @if(session('message'))
         <p style="color: green;">{{ session('message') }}</p>
     @endif

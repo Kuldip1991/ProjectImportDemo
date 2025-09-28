@@ -15,12 +15,11 @@ use App\Services\DiscountService;
 class DiscountServiceTest extends TestCase
 {
   
-    use RefreshDatabase;
+    // use RefreshDatabase;
 
     public function test_discount_application()
     {
         // $user = User::factory()->create();
-       // dd($user);
         $discount1 = Discount::create([
             'code' => 'WELCOME10',
             'percentage' => 10,
